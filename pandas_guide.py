@@ -48,6 +48,7 @@ obj3.reindex(range(6), method='ffill')
 obj = pd.Series(np.arange(5.), index=['a', 'b', 'c', 'd', 'e'])
 new_obj = obj.drop('c') # drop one item
 obj.drop(['d', 'c']) # drop several items
+obj.drop('c', inplace=True) # operate in place
 
 '''[Indexing, Selection, and Filtering]'''
 '''Retrieve a value'''
@@ -85,6 +86,12 @@ obj[mask] # return a series with values in mask, indexed by index in obj (not co
 data = pd.DataFrame({'Qu1': [1, 3, 4, 3, 4], 'Qu2': [2, 3, 1, 2, 3], 'Qu3': [1, 5, 2, 4, 4]})
 result = data.apply(pd.value_counts).fillna(0) # the row labels in the result are the distinct values occurring in all of the col‐ umns. The values are the respective counts of these values in each column.
 
+
+
+
+
+
+
 '''------------------------------02. DataFrame-------------------------------------'''
 '''A collection of series as columns, each series can be different data type.'''
 
@@ -102,7 +109,7 @@ frame3.values #check values in ndarray
 frame3.index.name = 'year' # index has a name
 frame3.columns.name = 'state' # column names also has a general name
 print(frame3.columns)
-print('print colums above')
+print(frame3.shape)
 
 '''[Modification]'''
 print(frame2['state']) # retrieve a series/column by column name/key
@@ -130,8 +137,7 @@ data = pd.DataFrame(np.arange(16).reshape((4, 4)), index=['Ohio', 'Colorado', 'U
 data.drop(['Colorado', 'Ohio']) # drop values from the row labels/index (axis 0)
 data.drop('two', axis=1) # drop values from the columns by passing axis=1 or axis='columns'
 data.drop(['two', 'four'], axis='columns')
-obj.drop('c', inplace=True) # operate in place
-  
+
 '''[Indexing, Selection, and Filtering]'''
 '''Retrieve a value'''
 print(data['two']['Colorado']) # fix a column then fix a row, return the VALUE, rather than a pandas object
@@ -201,8 +207,19 @@ frame.sort_index(axis=1, ascending=False) # sort by column keys
 
 frame.sort_values(by='b') # sort by values of certain columns
 frame.sort_values(by=['a', 'b'])
-# '''------------------------------03. Reindexing-------------------------------------'''
-#  
-#  
+
+
+
+
+'''------------------------------03. Data Cleaning and Preparation-------------------------------------'''
+'''[Missing Data]''' 
+
+'''[Removing Duplicates]'''
+
+'''[Transforming Data Using a Function or Mapping]'''
+'''Replacing Values'''
+'''Renaming Axis Indexes'''
+'''Vectorized String Functions'''
+
 
 
